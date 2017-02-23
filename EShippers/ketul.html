@@ -1,0 +1,166 @@
+<html>
+<head></head>
+<body>
+<script type="text/javascript">
+
+	function fns()
+	{	
+		
+		var bln =true;
+		var pass =/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+		var pattern =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		var notstart = /^[a-zA-Z]{2,50}$/;
+		var m_pattern =/^9[0-9]+$/;
+		var a=document.getElementById('name').value;
+		var b=document.getElementById('email').value;
+		var c=document.getElementById('mob').value;
+		var d=document.getElementById('pass').value;
+		var e=document.getElementById('repass').value;		
+		if(a=="")
+		{
+			document.getElementById('name1').innerHTML="Please Enter your Name...";
+			document.getElementById('name').focus();
+			document.getElementById('name').style.borderColor="red";
+			return false;
+		}
+		else if(notstart.test(a)==false)
+		{
+			///alert("not match");
+			document.getElementById('name1').innerHTML="Name can't start from digit or between 2-30 character";
+			document.getElementById('name').focus();
+			document.getElementById('name').style.borderColor="red";
+			return false;
+
+		}
+		else
+		{
+			document.getElementById('name1').innerHTML="";
+			document.getElementById('name').blur();
+			document.getElementById('name').style.borderColor="";
+		}
+		if(b=="")
+		{
+			document.getElementById('email1').innerHTML="Enter your Email-ID...";
+			document.getElementById('email').focus();
+			document.getElementById('email').style.borderColor="red";
+			return false;
+		}else if(pattern.test(b)==false)
+		{
+			document.getElementById('email1').innerHTML="Enter valid Email-ID...";
+			document.getElementById('email').focus();
+			return false;					
+		}else
+		{
+			document.getElementById('email1').innerHTML="";
+			document.getElementById('email').blur();
+			document.getElementById('email').style.borderColor="";
+		}
+		if(c=="")
+		{
+			document.getElementById('mob1').innerHTML="Enter your Mobile No...";
+			document.getElementById('mob').focus();
+			document.getElementById('mob').style.borderColor="red";
+			return false;
+		}else if(isNaN(c))
+		{
+			document.getElementById('mob1').innerHTML="Mobile number must contain numbers";
+			document.getElementById('mob').focus();
+			return false;
+		}
+		else if(m_pattern.test(c)==false)
+		{
+			document.getElementById('mob1').innerHTML="Mobile number must start from 9";
+			document.getElementById('mob').focus();
+			return false;
+		}else if(c.length!=10)
+		{
+			///alert("Na chale");
+			document.getElementById('mob1').innerHTML="Length must be 10";
+			document.getElementById("mobile").focus();
+		return false;
+		}
+		else
+		{
+			document.getElementById('mob1').innerHTML="";
+			document.getElementById('mob').blur();
+			document.getElementById('mob').style.borderColor="";
+		}
+		if(d=="")
+		{
+			document.getElementById('pass1').innerHTML="Please Enter your Password...";
+			document.getElementById('pass').focus();
+			document.getElementById('pass').style.borderColor="red";
+			return false;
+		}
+		else if(pass.test(d)==false)
+		{
+			///alert("not match");
+			document.getElementById('pass1').innerHTML="Password must contain at least one upper case, one lower case, one digit and at least 6 digit long.. ";
+			document.getElementById('pass').focus();
+			document.getElementById('pass').style.borderColor="red";
+			return false;
+
+		}
+		else
+		{
+			document.getElementById('pass1').innerHTML="";
+			document.getElementById('pass').blur();
+			document.getElementById('pass').style.borderColor="";
+		}
+		if(e=="")
+		{
+			document.getElementById('repass1').innerHTML="Please Enter your repassword...";
+			document.getElementById('repass').focus();
+			document.getElementById('repass').style.borderColor="red";
+			return false;
+		}
+		else if(d!=e)
+		{
+			///alert("not match");
+			document.getElementById('repass1').innerHTML="Password and Re-Password not matched";
+			document.getElementById('repass').focus();
+			document.getElementById('repass').style.borderColor="red";
+			return false;
+		}
+		else
+		{
+			document.getElementById('repass1').innerHTML="";
+			document.getElementById('repass').blur();
+			document.getElementById('repass').style.borderColor="";
+		}
+		return bln;
+	}
+	
+	name2
+	
+	</script>
+	<form>
+	<table>
+		<tr>
+		<td>
+		Name:</td><td><input type="text" label="Name" id='name'></td><td><p id='name1'></p></td>
+		</tr>
+		<tr>
+		<td>
+		Email:</td><td><input type="text" label="Email" id='email'></td><td><p id='email1'></p></td>
+		</tr>
+		<tr>
+		<td>
+		Mobile No:</td><td><input type="text" label="Mobile No" id='mob'></td><td id='mob1'></td>
+		</tr>
+		<tr>
+		<td>
+		Password:</td><td><input type="password" label="Password" id='pass'></td><td id='pass1'></td>
+		</tr>
+		<tr>
+		<td>
+		Re-Password:</td><td><input type="password" label="Re-Password" id='repass'></td><td id='repass1'></td>
+		</tr>
+		<tr>
+		<td colspan="3"><p>
+		<button onclick="javascript:return fns();">Enter</button></td></p>
+		<tr>
+	</table>	
+	</form>
+</body>
+</html>

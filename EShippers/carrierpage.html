@@ -1,0 +1,51 @@
+
+<html>
+<head>
+<title>Carrier Page</title>
+</head>
+
+<body>
+<p>Add New Route </p>
+<form method="Post" action="">
+<label>Source :</label><input type="text" name="source"/><br>
+<label>Destination :</label><input type="text" name="destination"/><br/>
+<label>Fare :</label><input type="number" name="fare"/><br>
+<input type="submit" value="Add"/>
+</form>
+
+<p>Active Routes</p>
+<div class="active">
+<?php
+	define('HOST_NAME','mysql.hostinger.in');
+	define('USER_NAME','u891124005_user1');
+	define('PASSWORD','Shraddha2702');
+	define('DATABASE','u891124005_trans');
+
+	$con=mysqli_connect(HOST_NAME,USER_NAME,PASSWORD,DATABASE);
+	$label = $_POST['name1'];
+
+	if(!$con)
+	{
+		echo "Connection Failed";
+	}
+
+	else
+	{
+		$sql="SELECT * FROM details";
+		$result=mysqli_query($con,$sql);
+
+		$response=array();
+
+		$check=mysqli_fetch_array($result);
+		
+		echo "<table>"
+		while($check)
+		{
+			echo "<tr><td>"+$check[0]+"</td><td>"+$check[1]+"</td><td>"+$check[2]+"</td></tr>";
+		}
+		echo "</table>"
+	}
+?>
+</div>
+</body>
+</html>
